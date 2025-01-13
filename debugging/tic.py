@@ -34,8 +34,18 @@ def tic_tac_toe():
         # Get valid user input
         while True:
             try:
-                row = int(input(f"Enter row (0, 1, or 2) for player {player}: "))
-                col = int(input(f"Enter column (0, 1, or 2) for player {player}: "))
+                row_input = input(f"Enter row (0, 1, or 2) for player {player}: ")
+                col_input = input(f"Enter column (0, 1, or 2) for player {player}: ")
+
+                # Check if the input is empty (i.e., user pressed Enter without entering a value)
+                if row_input == "" or col_input == "":
+                    print("Input cannot be empty! Please enter a value.")
+                    continue
+
+                # Convert the inputs to integers
+                row = int(row_input)
+                col = int(col_input)
+
                 if 0 <= row < 3 and 0 <= col < 3:  # Ensure valid range for row and column
                     if board[row][col] == " ":
                         break  # If the spot is empty, exit the loop
@@ -68,5 +78,7 @@ def tic_tac_toe():
     else:
         print("It's a draw!")
 
+# Call the function to start the game
 tic_tac_toe()
+
 
